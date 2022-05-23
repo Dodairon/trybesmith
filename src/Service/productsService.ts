@@ -1,4 +1,4 @@
-import Products from '../interface';
+import { Products } from '../interface';
 import { modelGetAll, modelPostProduct } from '../models/productsModels';
 
 export const ServiceGetAll = async (): Promise<Products[]> => {

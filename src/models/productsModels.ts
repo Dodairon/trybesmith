@@ -1,5 +1,5 @@
-// import { ResultSetHeader } from 'mysql2';
-import Products from '../interface';
+import { ResultSetHeader } from 'mysql2';
+import { Products } from '../interface';
 import connection from './connection';
 
 export const modelGetAll = async (): Promise<Products[]> => {
@@ -12,7 +12,7 @@ export const modelPostProduct = async (name: string, amount: string): Promise<Pr
   const sql = `INSERT INTO
   Trybesmith.Products(name, amount)
   VALUES (?, ?)`;
-  const [createProducts] = await connection.execute(sql, [name, amount]);
-  const { insertId } = createProducts as { insertId: number };
+  const [createProducts] = await connection.execute<ResultSetHeader>(sql, [name, amount]);
+  const { insertId } = createProducts;
   return { id: insertId, name, amount } as Products;
 };
