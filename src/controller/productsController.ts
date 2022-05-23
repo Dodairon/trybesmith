@@ -11,10 +11,11 @@ export const postProduct: RequestHandler = async (req, res) => {
   try {
     const { name, amount } = req.body;
     const products = await ServicePostProduct(name, amount);
-    res.status(StatusCodes.CREATED).json(products);    
+    res.status(StatusCodes.CREATED).json(products);
   } catch (error) {
     console.log(error);
-    
-    res.status(StatusCodes.CONFLICT).json({ message: (error as Error).message }); 
+    res
+      .status(StatusCodes.CONFLICT)
+      .json({ message: (error as Error).message });
   }
 };
