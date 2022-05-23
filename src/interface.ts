@@ -5,4 +5,7 @@ export type Products = {
   orderId?: number;
 };
 
-export default Products;
+export type Order = {
+  id: number,
+  userId: number
+};

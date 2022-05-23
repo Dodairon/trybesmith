@@ -16,3 +16,9 @@ export const modelPostProduct = async (name: string, amount: string): Promise<Pr
   const { insertId } = createProducts;
   return { id: insertId, name, amount } as Products;
 };
+
+export const modelGetOrderId = async (id: number): Promise<Products[]> => {
+  const sql = 'SELECT * FROM Trybesmith.Products WHERE orderId=?';
+  const [GetOrderId] = await connection.execute(sql, [id]);
+  return GetOrderId as Products[];
+};
